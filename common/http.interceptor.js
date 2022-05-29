@@ -15,8 +15,7 @@ const install = (Vue, vm) => {
 	// 请求拦截，配置Token等参数
 	Vue.prototype.$u.http.interceptor.request = (config) => {
 		// 将vuex内的token注入请求头
-		config.header.Authorization =
-			`Bearer ${vm.vuex_token}` 
+		config.header.Authorization =`Bearer ${vm.vuex_token}` 
 		return config;
 		
 	}
@@ -39,9 +38,9 @@ const install = (Vue, vm) => {
 		} else if (statusCode == 401) {
 			// 密码错误情况
 			if(data.message == "Unauthorized"){
-				vm.$u.toast('密码错误');
+				vm.$u.toast('账号或密码错误');
 			}else{
-				// token过期，未登录权限
+				// token过期或无token，未登录权限
 				vm.$u.utils.isLogin()
 			}
 			return false;

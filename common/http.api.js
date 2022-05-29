@@ -3,7 +3,6 @@ const install = (Vue, vm) => {
 	vm.$u.api = {}
 	// 首页
 	vm.$u.api.getIndex = (params = {}) => vm.$u.get('/api/index', params); //获取首页数据
-
 	// 商品
 	vm.$u.api.getGoodsList = (params = {}) => vm.$u.get(`/api/goods`, params); //商品列表
 	vm.$u.api.getGoodsDetail = id => vm.$u.get(`/api/goods/${id}`); //商品详情
@@ -22,7 +21,8 @@ const install = (Vue, vm) => {
 	vm.$u.api.isCheck = cart_ids => vm.$u.patch(`/api/carts/checked`, {
 		cart_ids
 	}); //将商品选中与否
-
+	
+	//用户相关的
 	// 个人中心
 	vm.$u.api.getUserInfo = () => vm.$u.get('/api/user') //获取用户信息
 	vm.$u.api.setUserInfo = params => vm.$u.put('/api/user', params) //更新用户信息
@@ -32,9 +32,8 @@ const install = (Vue, vm) => {
 	vm.$u.api.authLoginOut = () => vm.$u.post('/api/auth/logout') //退出登录
 	vm.$u.api.authRegister = params => vm.$u.post('/api/auth/register', params) //注册
 	vm.$u.api.authOss = () => vm.$u.get('/api/auth/oss/token') //获取oss
-	vm.$u.api.authAvatar = params => vm.$u.patch('/api/user/avatar', params) //用户更改头像
+	vm.$u.api.authAvatar = params => vm.$u.post('/api/user/avatar', params) //用户更改头像
 	// 订单相关的
-
 
 	// 后端
 
