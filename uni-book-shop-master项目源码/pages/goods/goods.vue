@@ -6,7 +6,7 @@
 			</view>
 			<view class="u-menu-wrap">
 				<scroll-view scroll-y scroll-with-animation class="u-tab-view menu-scroll-view" :scroll-top="scrollTop">
-					<block v-for="(item,index) in navData">
+					<block v-for="(item,index) in navData" :key="index">
 						<view class="u-line-1 navTitle">{{item.name}}</view>
 						<view v-for="child in item.children" :key="child.id" class="u-tab-item"
 							:class="[current==child.id ? 'u-tab-item-active' : '']" :data-current="child.id"
