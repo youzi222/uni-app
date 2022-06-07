@@ -25,8 +25,8 @@ const install = (Vue, vm) => {
 			
 			vm.$u.toast('请登录!')
 			setTimeout(() => {
-				vm.$u.route({
 					type: 'redirect',
+				vm.$u.route({
 					url: 'pages/auth/login',
 				})
 			}, 1500)

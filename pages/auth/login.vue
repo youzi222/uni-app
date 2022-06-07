@@ -22,6 +22,12 @@
 				password: ''
 			}
 		},
+			mounted: function() {
+			    if (location.href.indexOf("#reloaded") == -1) {
+			        location.href = location.href + "#reloaded";
+			        location.reload();
+			    }
+			},
 		async onLoad() {
 
 		},
@@ -62,7 +68,7 @@
 					}, 1500)
 				})
 			},
-			jump(path){
+			jump(path) {
 				// 页面的跳转
 				this.$u.route(path)
 			}
@@ -75,9 +81,9 @@
 		margin-bottom: 40rpx !important;
 	}
 
-.wrap .content .getCaptcha[data-v-cbd6070a] {
-    background-color: #a2b8ff;
-}
+	.wrap .content .getCaptcha[data-v-cbd6070a] {
+		background-color: #a2b8ff;
+	}
 
 	.wrap {
 		font-size: 28rpx;

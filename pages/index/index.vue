@@ -6,7 +6,7 @@
 				@change="change"></u-tabs>
 		</view>
 		<u-row gutter="16" class="u-skeleton">
-			<u-col span="6" v-for="goods in goodsList.length!== 0 ? goodsList : [{},{},{},{}]">
+			<u-col span="6" v-for="goods in goodsList">
 				<goods-card :goods='goods'></goods-card>
 			</u-col>
 		</u-row>
@@ -40,7 +40,7 @@
 				],
 				currentSort: 0,
 				slides: [],
-				goodsList: [],
+				goodsList: [{},{},{},{}],
 				page: 1,
 				loading: false,
 				scrollTop: 0,
@@ -55,7 +55,7 @@
 			change(index) {
 				this.currentSort = index;
 				//重置商品数据和分页
-				this.goodsList = []
+				this.goodsList = [{},{},{},{}]
 				this.page = 1
 				this.getData()
 				//判断筛选条件
@@ -73,7 +73,7 @@
 				const res = await this.$u.api.getIndex(params)
 				this.loading = false //隐藏骨架屏
 				this.slides = res.slides
-				this.goodsList = [...this.goodsList, ...res.goods.data]
+				this.goodsList = this.goodsList.pop().title?[...this.goodsList, ...res.goods.data]:res.goods.data
 
 			},
 			onPageScroll(e) {

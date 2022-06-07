@@ -21,6 +21,7 @@
 				password_confirmation: '',
 			}
 		},
+
 		computed: {
 			inputStyle() {
 				let style = {};
